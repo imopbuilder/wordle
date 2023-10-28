@@ -1,28 +1,31 @@
+import { generateRandomWord } from '@/lib/utils/generate-random-word';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface ClientState {
 	wordle: {
-		word: string | null;
+		word: string;
 		board: {
+			0: string;
 			1: string;
 			2: string;
 			3: string;
 			4: string;
-			5: string;
 		};
+		tries: number;
 	};
 }
 
 const initialState: ClientState = {
 	wordle: {
-		word: null,
+		word: generateRandomWord(),
 		board: {
+			0: '',
 			1: '',
 			2: '',
 			3: '',
 			4: '',
-			5: '',
 		},
+		tries: 0,
 	},
 };
 

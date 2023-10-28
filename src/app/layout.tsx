@@ -1,3 +1,6 @@
+import ReduxProvider from '@/client/providers/redux-provider';
+import Header from '@/components/pages/header';
+import { Toaster } from '@/components/ui/toaster';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../styles/main.scss';
@@ -15,8 +18,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang='en'>
-			<body className={inter.className}>{children}</body>
+		<html lang='en' className='dark'>
+			<body className={inter.className}>
+				<ReduxProvider>
+					<Header />
+					{children}
+				</ReduxProvider>
+				<Toaster />
+			</body>
 		</html>
 	);
 }
